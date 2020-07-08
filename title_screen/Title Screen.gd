@@ -20,7 +20,7 @@ func _process(delta):
 		pass
 
 func _on_Start_pressed():
-	get_tree().change_scene("res://level_1/Level 1.tscn")
+	get_tree().change_scene("res://howtoplay_screen/How To Play.tscn")
 
 func _on_Options_pressed():
 	pass
