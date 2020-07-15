@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://enemies/assets/yoghurt_blob/yoghurtblob3.png" type="Texture" id=1]
+[ext_resource path="res://enemies/assets/yoghurt_blob/yoghurtblob2.png" type="Texture" id=2]
+[ext_resource path="res://enemies/assets/yoghurt_blob/yoghurtblob1.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "yoghurtblob",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.0999, 55.4459 )
+
+[node name="Yoghurt Blob" type="KinematicBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "yoghurtblob"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 10, 120 )
+shape = SubResource( 2 )

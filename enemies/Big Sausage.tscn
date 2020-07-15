@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://enemies/assets/big_sausage/thicksausage1.png" type="Texture" id=1]
+[ext_resource path="res://enemies/assets/big_sausage/thicksausage2.png" type="Texture" id=2]
+[ext_resource path="res://enemies/assets/big_sausage/thicksausage3.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "bigsausage",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 67.921, 153.224 )
+
+[node name="Big Sausage" type="KinematicBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "bigsausage"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -20 )
+shape = SubResource( 2 )
