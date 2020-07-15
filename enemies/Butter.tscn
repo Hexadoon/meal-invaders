@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://enemies/assets/butter/butter2.png" type="Texture" id=1]
+[ext_resource path="res://enemies/assets/butter/butter1.png" type="Texture" id=2]
+[ext_resource path="res://enemies/assets/butter/butter3.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "butter",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 21.0439, 47.9497 )
+
+[node name="Butter" type="KinematicBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "butter"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -8, 130 )
+shape = SubResource( 2 )
