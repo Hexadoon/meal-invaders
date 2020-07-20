@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://enemies/assets/bacon/bacon3.png" type="Texture" id=1]
 [ext_resource path="res://enemies/assets/bacon/bacon2.png" type="Texture" id=2]
 [ext_resource path="res://enemies/assets/bacon/bacon1.png" type="Texture" id=3]
+[ext_resource path="res://enemies/scripts/Bacon.gd" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -13,9 +14,15 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 35.6081, 178.018 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 35.2255, 178.133 )
 
 [node name="Bacon" type="KinematicBody2D"]
+scale = Vector2( 0.2, 0.2 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -27,3 +34,12 @@ animation = "bacon"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -5, -40 )
 shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -5, -40 )
+shape = SubResource( 3 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

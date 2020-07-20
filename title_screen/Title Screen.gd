@@ -16,14 +16,12 @@ func _process(delta):
 		$"Arrows/Start Arrow".visible = false
 		$"Arrows/Options Arrow".visible = false
 		$"Arrows/Quit Arrow".visible = true
-	else:
-		pass
 
 func _on_Start_pressed():
 	get_tree().change_scene("res://howtoplay_screen/How To Play.tscn")
 
 func _on_Options_pressed():
-	pass
+	get_tree().change_scene("res://options_screen/Options.tscn")
 
 func _on_Quit_pressed():
 	get_tree().quit()

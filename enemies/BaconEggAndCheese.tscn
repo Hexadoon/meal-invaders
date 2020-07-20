@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://enemies/assets/baconeggandcheese/becsamm3.png" type="Texture" id=1]
 [ext_resource path="res://enemies/assets/baconeggandcheese/becsamm1.png" type="Texture" id=2]
 [ext_resource path="res://enemies/assets/baconeggandcheese/becsamm2.png" type="Texture" id=3]
+[ext_resource path="res://enemies/scripts/BaconEggAndCheese.gd" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -13,9 +14,15 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 195.21, 181.34 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 194.218, 181.199 )
 
 [node name="BaconEggAndCheese" type="KinematicBody2D"]
+position = Vector2( 248.461, 134.522 )
+scale = Vector2( 0.2, 0.2 )
+collision_mask = 0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -25,5 +32,12 @@ frames = SubResource( 1 )
 animation = "baconeggandcheese"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 5, -50 )
 shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 5, -50 )
+shape = SubResource( 3 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
