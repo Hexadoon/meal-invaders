@@ -19,7 +19,6 @@ animations = [ {
 extents = Vector2( 194.218, 181.199 )
 
 [node name="BaconEggAndCheese" type="KinematicBody2D"]
-position = Vector2( 248.461, 134.522 )
 scale = Vector2( 0.2, 0.2 )
 collision_mask = 0
 script = ExtResource( 4 )
