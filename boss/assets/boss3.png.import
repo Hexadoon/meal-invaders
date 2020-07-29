@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow.png-6229e5b2b0535ed9d626a9f43c2841f0.stex"
+path="res://.import/boss3.png-86e7528d74e0dd192c319deb75b23d29.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://options_screen/assets/arrow.png"
-dest_files=[ "res://.import/arrow.png-6229e5b2b0535ed9d626a9f43c2841f0.stex" ]
+source_file="res://boss/assets/boss3.png"
+dest_files=[ "res://.import/boss3.png-86e7528d74e0dd192c319deb75b23d29.stex" ]
 
 [params]
 

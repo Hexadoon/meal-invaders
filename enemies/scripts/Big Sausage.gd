@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 var level
+var lives = 5
+var drop = false
 
 func _ready():
 	level = get_parent()
@@ -9,12 +11,18 @@ func _process(delta):
 	$"AnimatedSprite".play()
 
 func _on_Area2D_area_entered(area):
-	queue_free()
-	randomize()
-	var rng = int(rand_range(1, 101))
-	print(rng)
-	if rng >= 1 and rng <= 10:
-		dropitem()
+	if lives == 0:
+		if drop == true:
+			pass
+		else:
+			queue_free()
+			randomize()
+			var rng = int(rand_range(1, 101))
+			if rng >= 1 and rng <= 5:
+				dropitem()
+			drop = true
+	else:
+		lives -= 1
 
 func dropitem():
 	randomize()

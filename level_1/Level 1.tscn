@@ -1,65 +1,298 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemies/Toast.tscn" type="PackedScene" id=2]
-[ext_resource path="res://enemies/Yoghurt.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/BaconEggAndCheese.tscn" type="PackedScene" id=3]
 [ext_resource path="res://enemies/Big Sausage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://enemies/Egg.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemies/Avocado.tscn" type="PackedScene" id=6]
-[ext_resource path="res://enemies/BaconEggAndCheese.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemies/Yoghurt.tscn" type="PackedScene" id=7]
 [ext_resource path="res://enemies/Small Sausage.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/health1.png" type="Texture" id=9]
 [ext_resource path="res://level_1/Camera.gd" type="Script" id=10]
 [ext_resource path="res://assets/health3.png" type="Texture" id=11]
 [ext_resource path="res://assets/health4.png" type="Texture" id=12]
 [ext_resource path="res://assets/health2.png" type="Texture" id=13]
+[ext_resource path="res://level_1/Barrier.gd" type="Script" id=15]
 [ext_resource path="res://font/gnutypewriter_font.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/life.png" type="Texture" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 18 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 512, 10 )
+
 [node name="Level 1" type="Node2D"]
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Avocado" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 514.066, 105.9 )
-
-[node name="Avocado2" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 399.79, 42.6089 )
-
-[node name="Avocado3" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 624.825, 32.0604 )
-
-[node name="Avocado4" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 422.646, -108.587 )
-
-[node name="Avocado5" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 586.147, -55.844 )
-
-[node name="BaconEggAndCheese" parent="Enemies" instance=ExtResource( 7 )]
-position = Vector2( 514.266, -407.33 )
-
-[node name="Big Sausage" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 511.066, -719.034 )
-
 [node name="Egg" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 515.766, -959.796 )
+position = Vector2( 512, -160 )
+
+[node name="Egg2" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 448, -95.9998 )
+
+[node name="Egg3" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 576, -95.9998 )
+
+[node name="Egg4" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 512, -63.9998 )
 
 [node name="Small Sausage" parent="Enemies" instance=ExtResource( 8 )]
-position = Vector2( 511.066, -1224 )
+position = Vector2( 256, -320 )
+
+[node name="Small Sausage2" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 288, -320 )
+
+[node name="Small Sausage3" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 288, -416 )
+
+[node name="Small Sausage4" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 256, -416 )
+
+[node name="Small Sausage12" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 704, -320 )
+
+[node name="Small Sausage11" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 736, -320 )
+
+[node name="Small Sausage10" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 736, -416 )
+
+[node name="Small Sausage9" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 704, -416 )
 
 [node name="Toast" parent="Enemies" instance=ExtResource( 2 )]
-position = Vector2( 764.433, -1446.68 )
+position = Vector2( 416, -672 )
 
-[node name="Yoghurt" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 307.279, -1714.48 )
+[node name="Toast2" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 608, -672 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Toast3" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 512, -608 )
+
+[node name="Avocado" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 384, -928 )
+
+[node name="Avocado2" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 320, -928 )
+
+[node name="Avocado3" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 448, -928 )
+
+[node name="Avocado4" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 352, -864 )
+
+[node name="Avocado5" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 416, -864 )
+
+[node name="Avocado6" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 640, -928 )
+
+[node name="Avocado7" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 576, -928 )
+
+[node name="Avocado8" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 704, -928 )
+
+[node name="Avocado9" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 608, -864 )
+
+[node name="Avocado10" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 672, -864 )
+
+[node name="BaconEggAndCheese" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 512, -1120 )
+
+[node name="BaconEggAndCheese2" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 416, -1120 )
+
+[node name="BaconEggAndCheese3" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 608, -1120 )
+
+[node name="BaconEggAndCheese4" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 256, -1472 )
+
+[node name="BaconEggAndCheese5" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 352, -1568 )
+
+[node name="BaconEggAndCheese6" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 160, -1376 )
+
+[node name="BaconEggAndCheese7" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 768, -1472 )
+
+[node name="BaconEggAndCheese8" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 672, -1568 )
+
+[node name="BaconEggAndCheese9" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 864, -1376 )
+
+[node name="Big Sausage" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 256, -1856 )
+
+[node name="Big Sausage2" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 512, -1856 )
+
+[node name="Big Sausage3" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 768, -1856 )
+
+[node name="Yoghurt" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 256, -2016 )
+
+[node name="Yoghurt2" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 512, -2016 )
+
+[node name="Yoghurt3" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 768, -2016 )
+
+[node name="Yoghurt4" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 384, -1888 )
+
+[node name="Yoghurt5" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 640, -1888 )
+
+[node name="Egg5" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 64, -2368 )
+
+[node name="Egg6" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 192, -2368 )
+
+[node name="Egg7" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 320, -2272 )
+
+[node name="Egg8" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 704, -2272 )
+
+[node name="Egg11" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 608, -2272 )
+
+[node name="Egg12" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 512, -2272 )
+
+[node name="Egg13" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 416, -2272 )
+
+[node name="Egg9" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 960, -2368 )
+
+[node name="Egg10" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 832, -2368 )
+
+[node name="Toast4" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 320, -2432 )
+
+[node name="Toast5" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 512, -2432 )
+
+[node name="Toast6" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 704, -2432 )
+
+[node name="Toast7" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 896, -2496 )
+
+[node name="Toast8" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 128, -2496 )
+
+[node name="Avocado11" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 512, -2784 )
+
+[node name="Avocado12" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 256, -2720 )
+
+[node name="Avocado13" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 768, -2720 )
+
+[node name="Avocado14" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 928, -2880 )
+
+[node name="Avocado18" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 384, -2880 )
+
+[node name="Avocado19" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 640, -2880 )
+
+[node name="Avocado15" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 96, -2880 )
+
+[node name="Small Sausage5" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 160, -2816 )
+
+[node name="Small Sausage6" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 864, -2816 )
+
+[node name="Small Sausage7" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 640, -2720 )
+
+[node name="Small Sausage8" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 416, -2720 )
+
+[node name="Yoghurt6" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 512, -2944 )
+
+[node name="Yoghurt7" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 256, -2880 )
+
+[node name="Yoghurt8" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 768, -2880 )
+
+[node name="Big Sausage4" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 256, -3264 )
+
+[node name="Big Sausage5" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 352, -3488 )
+
+[node name="Big Sausage6" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 672, -3488 )
+
+[node name="Big Sausage8" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 512, -3168 )
+
+[node name="Big Sausage9" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 96, -3136 )
+
+[node name="Big Sausage10" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 928, -3136 )
+
+[node name="Big Sausage11" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 960, -3392 )
+
+[node name="Big Sausage12" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 64, -3392 )
+
+[node name="Big Sausage7" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 768, -3264 )
+
+[node name="BaconEggAndCheese10" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 128, -3264 )
+
+[node name="BaconEggAndCheese11" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 896, -3264 )
+
+[node name="BaconEggAndCheese12" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 800, -3424 )
+
+[node name="BaconEggAndCheese13" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 224, -3424 )
+
+[node name="BaconEggAndCheese14" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 384, -3168 )
+
+[node name="BaconEggAndCheese15" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 640, -3168 )
+
+[node name="BaconEggAndCheese16" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 608, -3328 )
+
+[node name="BaconEggAndCheese17" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 416, -3328 )
+
+[node name="BaconEggAndCheese18" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 512, -3488 )
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 510.466, 299.326 )
+position = Vector2( 510.466, 299.33 )
 current = true
 process_mode = 0
 script = ExtResource( 10 )
@@ -68,6 +301,7 @@ __meta__ = {
 }
 
 [node name="Health" type="Node2D" parent="Camera"]
+z_index = 3
 
 [node name="Green" type="Sprite" parent="Camera/Health"]
 position = Vector2( 342.917, -251.781 )
@@ -86,6 +320,7 @@ position = Vector2( 410.4, -251.781 )
 texture = ExtResource( 12 )
 
 [node name="Lives" type="Node2D" parent="Camera"]
+z_index = 3
 
 [node name="Lives Counter" type="Label" parent="Camera/Lives"]
 margin_left = -444.0
@@ -103,3 +338,17 @@ __meta__ = {
 position = Vector2( -475, -261 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 19 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 514.066, 512.001 )
+
+[node name="Barrier" type="Area2D" parent="."]
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier"]
+position = Vector2( 512, -3968 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="Barrier" to="Barrier" method="_on_Barrier_area_entered"]

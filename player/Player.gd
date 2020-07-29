@@ -55,7 +55,6 @@ func _ready():
 	idle_right = "idle_right"
 
 func _physics_process(delta):
-	print(position)
 	if Input.is_action_just_pressed("ui_left"):
 		$AnimatedSprite.play(left)
 	elif Input.is_action_just_pressed("ui_right"):
@@ -63,13 +62,13 @@ func _physics_process(delta):
 	else:
 		if Input.is_action_pressed("ui_x"):
 			if Input.is_action_pressed("ui_left"):
-				if position.x > 100:
+				if position.x > 50:
 					motion.x = -REFINED_SPEED
 					$AnimatedSprite.play(idle_left)
 				else:
 					motion.x = 0
 			elif Input.is_action_pressed("ui_right"):
-				if position.x < 924:
+				if position.x < 974:
 					motion.x = REFINED_SPEED
 					$AnimatedSprite.play(idle_right)
 				else:
@@ -79,13 +78,13 @@ func _physics_process(delta):
 				$AnimatedSprite.play(idle)
 		else:
 			if Input.is_action_pressed("ui_left"):
-				if position.x > 100:
+				if position.x > 50:
 					motion.x = -SPEED
 					$AnimatedSprite.play(idle_left)
 				else:
 					motion.x = 0
 			elif Input.is_action_pressed("ui_right"):
-				if position.x < 924:
+				if position.x < 974:
 					motion.x = SPEED
 					$AnimatedSprite.play(idle_right)
 				else:
@@ -138,7 +137,7 @@ func _physics_process(delta):
 	move_and_slide(motion)
 	if lives.lives == 0:
 		get_tree().change_scene("res://gameover_screen/Game Over.tscn")
-	if health == 0:
+	if health == 0 or health < 0:
 		lives.lives -= 1
 		get_tree().reload_current_scene()
 	if fire_rate > 0:
@@ -150,35 +149,41 @@ func _physics_process(delta):
 
 func shoot():
 	var bullet = projectile.instance()
+	bullet.set_z_index(2)
 	bullet.position = get_global_position()
 	level.add_child(bullet)
 	level.move_child(bullet, 0)
 
 func bb_shoot():
 	var bullet = bb_projectile.instance()
+	bullet.set_z_index(2)
 	bullet.position = get_global_position()
 	level.add_child(bullet)
 	level.move_child(bullet, 0)
 
 func rasp_shoot():
 	var bullet = rasp_projectile.instance()
+	bullet.set_z_index(2)
 	add_child(bullet)
 	level.move_child(bullet, 0)
 
 func lem_shoot_small():
 	var bullet = lem_projectile_small.instance()
+	bullet.set_z_index(2)
 	bullet.position = get_global_position()
 	level.add_child(bullet)
 	level.move_child(bullet, 0)
 
 func lem_shoot_med():
 	var bullet = lem_projectile_med.instance()
+	bullet.set_z_index(2)
 	bullet.position = get_global_position()
 	level.add_child(bullet)
 	level.move_child(bullet, 0)
 
 func lem_shoot_big():
 	var bullet = lem_projectile_big.instance()
+	bullet.set_z_index(2)
 	bullet.position = get_global_position()
 	level.add_child(bullet)
 	level.move_child(bullet, 0)
@@ -199,6 +204,8 @@ func _on_Area2D_area_entered(area):
 	elif area == get_parent().get_node("Pickups/Extra Life/Area2D") or area == get_parent().get_node("Enemies/Extra Life/Area2D"):
 		if lives.lives < 5:
 			lives.lives += 1
+	elif area == get_parent().get_node("Barrier"):
+		pass
 	else:
 		health -= 1
 		print("You've been hit!")

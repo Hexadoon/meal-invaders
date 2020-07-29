@@ -1,13 +1,18 @@
 extends KinematicBody2D
 
 var velocity = Vector2()
+var initial = false
+var init_pos = Vector2()
 
 func _ready():
 	velocity.y = 300
 
 func _physics_process(delta):
 	$"AnimatedSprite".play()
-	if position.y > 10000:
+	if !initial:
+		initial = true
+		init_pos = position.y
+	if position.y > init_pos + 500:
 		queue_free()
 	move_and_slide(velocity)
 

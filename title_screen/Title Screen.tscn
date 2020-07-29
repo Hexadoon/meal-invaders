@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://font/gnutypewriter_font.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://title_screen/Title Screen.gd" type="Script" id=2]
@@ -17,12 +17,6 @@ font_data = ExtResource( 1 )
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="DynamicFont" id=5]
-size = 20
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="DynamicFont" id=7]
 size = 20
 font_data = ExtResource( 1 )
 
@@ -57,7 +51,7 @@ margin_right = 208.0
 margin_bottom = 36.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Food Invaders"
+text = "Meal Invaders"
 align = 1
 valign = 1
 __meta__ = {
@@ -84,24 +78,12 @@ text = "Start"
 flat = true
 align = 0
 
-[node name="Options" type="Button" parent="Buttons"]
+[node name="Quit" type="Button" parent="Buttons"]
 margin_top = 38.0
 margin_right = 208.0
 margin_bottom = 72.0
 custom_styles/focus = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-text = "Options"
-flat = true
-align = 0
-
-[node name="Quit" type="Button" parent="Buttons"]
-margin_top = 76.0
-margin_right = 208.0
-margin_bottom = 110.0
-custom_styles/focus = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Quit"
@@ -122,29 +104,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options Arrow" type="TextureRect" parent="Arrows"]
-visible = false
-margin_left = 87.8512
-margin_top = 434.867
-margin_right = 107.851
-margin_bottom = 454.867
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Quit Arrow" type="TextureRect" parent="Arrows"]
 visible = false
-margin_left = 87.8511
-margin_top = 473.871
+margin_left = 87.8512
+margin_top = 434.729
 margin_right = 107.851
-margin_bottom = 493.871
+margin_bottom = 454.729
 texture = ExtResource( 3 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
