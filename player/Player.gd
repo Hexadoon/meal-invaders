@@ -33,6 +33,8 @@ var health_yellow
 var health_orange
 var health_red
 
+var intro_ani = false
+
 func _ready():
 	motion.y = -100
 	camera = get_parent().get_node("Camera")
@@ -53,99 +55,108 @@ func _ready():
 	right = "right"
 	idle_left = "idle_left"
 	idle_right = "idle_right"
+	$"Idle Sound".play()
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_left"):
-		$AnimatedSprite.play(left)
-	elif Input.is_action_just_pressed("ui_right"):
-		$AnimatedSprite.play(right)
+	if !intro_ani:
+		$AnimatedSprite.play("intro")
+		move_and_slide(motion)
 	else:
-		if Input.is_action_pressed("ui_x"):
-			if Input.is_action_pressed("ui_left"):
-				if position.x > 50:
-					motion.x = -REFINED_SPEED
-					$AnimatedSprite.play(idle_left)
-				else:
-					motion.x = 0
-			elif Input.is_action_pressed("ui_right"):
-				if position.x < 974:
-					motion.x = REFINED_SPEED
-					$AnimatedSprite.play(idle_right)
-				else:
-					motion.x = 0
-			else:
-				motion.x = 0
-				$AnimatedSprite.play(idle)
+		if Input.is_action_just_pressed("ui_left"):
+			$AnimatedSprite.play(left)
+		elif Input.is_action_just_pressed("ui_right"):
+			$AnimatedSprite.play(right)
 		else:
-			if Input.is_action_pressed("ui_left"):
-				if position.x > 50:
-					motion.x = -SPEED
-					$AnimatedSprite.play(idle_left)
+			if Input.is_action_pressed("ui_x"):
+				if Input.is_action_pressed("ui_left"):
+					if position.x > 50:
+						motion.x = -REFINED_SPEED
+						$AnimatedSprite.play(idle_left)
+					else:
+						motion.x = 0
+				elif Input.is_action_pressed("ui_right"):
+					if position.x < 974:
+						motion.x = REFINED_SPEED
+						$AnimatedSprite.play(idle_right)
+					else:
+						motion.x = 0
 				else:
 					motion.x = 0
-			elif Input.is_action_pressed("ui_right"):
-				if position.x < 974:
-					motion.x = SPEED
-					$AnimatedSprite.play(idle_right)
-				else:
-					motion.x = 0
+					$AnimatedSprite.play(idle)
 			else:
-				motion.x = 0
-				$AnimatedSprite.play(idle)
-	if Input.is_action_pressed("ui_up"):
-		if position.y > (camera.position.y - 250):
-			motion.y = -SPEED
+				if Input.is_action_pressed("ui_left"):
+					if position.x > 50:
+						motion.x = -SPEED
+						$AnimatedSprite.play(idle_left)
+					else:
+						motion.x = 0
+				elif Input.is_action_pressed("ui_right"):
+					if position.x < 974:
+						motion.x = SPEED
+						$AnimatedSprite.play(idle_right)
+					else:
+						motion.x = 0
+				else:
+					motion.x = 0
+					$AnimatedSprite.play(idle)
+		if Input.is_action_pressed("ui_up"):
+			if position.y > (camera.position.y - 250):
+				motion.y = -SPEED
+			else:
+				motion.y = -100
+		elif Input.is_action_pressed("ui_down"):
+			if position.y < (camera.position.y + 200):
+				motion.y = SPEED
+			else:
+				motion.y = -100
 		else:
 			motion.y = -100
-	elif Input.is_action_pressed("ui_down"):
-		if position.y < (camera.position.y + 200):
-			motion.y = SPEED
-		else:
-			motion.y = -100
-	else:
-		motion.y = -100
-	if Input.is_action_pressed("ui_z"):
-		if idle == "bb_idle":
-			if bbfire_rate == 0:
-				bb_shoot()
-				shoot()
-				bbfire_rate = 5
-		elif idle == "rasp_idle":
-			rasp_shoot()
-		elif idle == "lem_idle":
-			if lemfire_rate == 0:
-				if lem == 0:
-					lem_shoot_small()
-					lem = 1
-				elif lem == 1:
-					lem_shoot_med()
-					lem = 2
-				elif lem == 2:
-					lem_shoot_big()
-					lem = 3
-				elif lem == 3:
-					lem_shoot_med()
-					lem = 4
-				elif lem == 4:
-					lem_shoot_small()
-					lem = 0
-				lemfire_rate = 5
-		else:
-			if fire_rate == 0:
-				shoot()
-				fire_rate = 10
-	move_and_slide(motion)
-	if lives.lives == 0:
-		get_tree().change_scene("res://gameover_screen/Game Over.tscn")
-	if health == 0 or health < 0:
-		lives.lives -= 1
-		get_tree().reload_current_scene()
-	if fire_rate > 0:
-		fire_rate -= 1
-	if bbfire_rate > 0:
-		bbfire_rate -= 1
-	if lemfire_rate > 0:
-		lemfire_rate -= 1
+		if Input.is_action_pressed("ui_z"):
+			if idle == "bb_idle":
+				if bbfire_rate == 0:
+					$"Blueberry Bullet".play()
+					bb_shoot()
+					shoot()
+					bbfire_rate = 5
+			elif idle == "rasp_idle":
+				rasp_shoot()
+				$"Raspberry Laser".play()
+			elif idle == "lem_idle":
+				if lemfire_rate == 0:
+					$"Lemon Bullet".play()
+					if lem == 0:
+						lem_shoot_small()
+						lem = 1
+					elif lem == 1:
+						lem_shoot_med()
+						lem = 2
+					elif lem == 2:
+						lem_shoot_big()
+						lem = 3
+					elif lem == 3:
+						lem_shoot_med()
+						lem = 4
+					elif lem == 4:
+						lem_shoot_small()
+						lem = 0
+					lemfire_rate = 5
+			else:
+				if fire_rate == 0:
+					shoot()
+					fire_rate = 10
+					$"Carrot Bullet".play()
+		move_and_slide(motion)
+		if lives.lives == 0:
+			get_tree().change_scene("res://gameover_screen/Game Over.tscn")
+		if health == 0 or health < 0:
+			lives.lives -= 1
+			get_tree().reload_current_scene()
+		if fire_rate > 0:
+			fire_rate -= 1
+		if bbfire_rate > 0:
+			bbfire_rate -= 1
+		if lemfire_rate > 0:
+			lemfire_rate -= 1
 
 func shoot():
 	var bullet = projectile.instance()
@@ -195,15 +206,20 @@ func _on_Area2D_area_entered(area):
 			print("You gained 1 health")
 		else:
 			print("You have full health!")
+		$Powerup.play()
 	elif area == get_parent().get_node("Pickups/Blueberry Upgrade/Area2D") or area == get_parent().get_node("Enemies/Blueberry Upgrade/Area2D"):
 		blueberryupgrade()
+		$Powerup.play()
 	elif area == get_parent().get_node("Pickups/Raspberry Upgrade/Area2D") or area == get_parent().get_node("Enemies/Raspberry Upgrade/Area2D"):
 		raspberryupgrade()
+		$Powerup.play()
 	elif area == get_parent().get_node("Pickups/Lemon Upgrade/Area2D") or area == get_parent().get_node("Enemies/Lemon Upgrade/Area2D"):
 		lemonupgrade()
+		$Powerup.play()
 	elif area == get_parent().get_node("Pickups/Extra Life/Area2D") or area == get_parent().get_node("Enemies/Extra Life/Area2D"):
 		if lives.lives < 5:
 			lives.lives += 1
+		$Powerup.play()
 	elif area == get_parent().get_node("Barrier"):
 		pass
 	else:
@@ -255,3 +271,10 @@ func lemonupgrade():
 	right = "lem_right"
 	idle_left = "lem_idle_left"
 	idle_right = "lem_idle_right"
+
+func _on_Idle_Sound_finished():
+	$"Idle Sound".play()
+
+func _on_AnimatedSprite_animation_finished():
+	if !intro_ani:
+		intro_ani = true

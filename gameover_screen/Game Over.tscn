@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gameover_screen/assets/arrow.png" type="Texture" id=1]
 [ext_resource path="res://font/gnutypewriter_font.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://gameover_screen/Game Over.gd" type="Script" id=3]
+[ext_resource path="res://sfx/game_over.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -108,5 +109,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Game Over Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
 [connection signal="pressed" from="Buttons/Play Again" to="." method="_on_Play_Again_pressed"]
 [connection signal="pressed" from="Buttons/Exit To Menu" to="." method="_on_Exit_To_Menu_pressed"]

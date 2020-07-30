@@ -11,6 +11,8 @@ var projectile
 var projectile_tip
 var level
 
+var sound_played = false
+
 func _ready():
 	projectile = load("res://boss/Boss Projectile.tscn")
 	projectile_tip = load("res://boss/Boss Projectile Tip.tscn")
@@ -44,6 +46,9 @@ func _on_Area2D_area_entered(area):
 	else:
 		dead = true
 		animation = "right_hand_dead"
+		if !sound_played:
+			$"Hand Death Sound".play()
+			sound_played = true
 
 func shoot():
 	var bullet = projectile.instance()

@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
-var head_lives = 150
+var head_lives = 200
 var animation = "head"
 
 var left_hand_lives
 var right_hand_lives
 
-var counter = 0
+var counter = 200
 
 var level
 var projectile
@@ -19,8 +19,9 @@ func _ready():
 
 func _physics_process(delta):
 	$AnimatedSprite.play(animation)
-	if head_lives < 50:
-		if counter == 400:
+	if head_lives < 100:
+		if counter == 300:
+			$Vomit.play()
 			animation = "vomit"
 			counter = 0
 		else:
@@ -28,13 +29,16 @@ func _physics_process(delta):
 
 func _on_Area2D_area_entered(area):
 	if left_hand_lives.left_hand_lives == 1 and right_hand_lives.right_hand_lives == 1:
-		if head_lives > 50:
+		if head_lives > 100:
 			head_lives -= 1
-		else:
+		elif animation != "head_injured":
 			animation = "head_injured"
 			head_lives -= 1
+			$"Hurt Sound".play()
+		else:
+			head_lives -= 1
 		if head_lives == 1:
-			get_tree().change_scene("res://title_screen/Title Screen.tscn")
+			$"Dead Sound".play()
 
 func _on_AnimatedSprite_animation_finished():
 	if animation == "vomit":
@@ -45,3 +49,6 @@ func shoot():
 	var bullet = projectile.instance()
 	add_child(bullet)
 	level.move_child(bullet, 0)
+
+func _on_Dead_Sound_finished():
+	get_tree().change_scene("res://levelpassed_screen/Level Passed Screen.tscn")
