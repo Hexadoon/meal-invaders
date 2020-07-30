@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blueberry bullet.wav-000c9253f2e8a06bc11c2e2c703ae4f3.sample"
+
+[deps]
+
+source_file="res://sfx/blueberry bullet.wav"
+dest_files=[ "res://.import/blueberry bullet.wav-000c9253f2e8a06bc11c2e2c703ae4f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

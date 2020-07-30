@@ -5,6 +5,7 @@ var lives
 func _ready():
 	lives = get_node("/root/PlayerVariables")
 	$"Buttons/Play Again".grab_focus()
+	$"Game Over Sound".play()
 
 func _process(delta):
 	if $"Buttons/Play Again".has_focus():

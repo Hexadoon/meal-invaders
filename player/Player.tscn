@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://player/assets/carrot/carrotship_idleright3.png" type="Texture" id=1]
 [ext_resource path="res://player/assets/carrot/carrotship_turningleft.png" type="Texture" id=2]
@@ -45,6 +45,19 @@
 [ext_resource path="res://player/assets/powerups/lemon/carrotshiplemon_idleright1.png" type="Texture" id=43]
 [ext_resource path="res://player/assets/powerups/lemon/carrotshiplemon_idleright2.png" type="Texture" id=44]
 [ext_resource path="res://player/assets/powerups/lemon/carrotshiplemon_idleright3.png" type="Texture" id=45]
+[ext_resource path="res://sfx/powerup.wav" type="AudioStream" id=46]
+[ext_resource path="res://sfx/carrot_ship.wav" type="AudioStream" id=47]
+[ext_resource path="res://sfx/bullet.wav" type="AudioStream" id=48]
+[ext_resource path="res://sfx/raspberry_laser.wav" type="AudioStream" id=49]
+[ext_resource path="res://sfx/blueberry bullet.wav" type="AudioStream" id=50]
+[ext_resource path="res://sfx/lemon bullet.wav" type="AudioStream" id=51]
+[ext_resource path="res://player/assets/intro/carrotship_intro1.png" type="Texture" id=52]
+[ext_resource path="res://player/assets/intro/carrotship_intro4.png" type="Texture" id=53]
+[ext_resource path="res://player/assets/intro/carrotship_intro3.png" type="Texture" id=54]
+[ext_resource path="res://player/assets/intro/carrotship_intro5.png" type="Texture" id=55]
+[ext_resource path="res://player/assets/intro/carrotship_intro2.png" type="Texture" id=56]
+[ext_resource path="res://player/assets/intro/carrotship_intro6.png" type="Texture" id=57]
+[ext_resource path="res://player/assets/intro/carrotship_intro7.png" type="Texture" id=58]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -63,14 +76,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "idle_left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 1 ) ],
 "loop": false,
 "name": "idle_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ) ],
@@ -78,19 +91,9 @@ animations = [ {
 "name": "rasp_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 21 ) ],
 "loop": true,
-"name": "bb_idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 32 ) ],
-"loop": true,
-"name": "rasp_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 40 ) ],
-"loop": true,
-"name": "lem_right",
+"name": "bb_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 20 ), ExtResource( 16 ) ],
@@ -98,34 +101,14 @@ animations = [ {
 "name": "bb_idle_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "bb_idle_right",
+"name": "bb_idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 24 ) ],
 "loop": true,
-"name": "lem_idle_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 41 ) ],
-"loop": true,
-"name": "lem_idle_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "bb_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 29 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "rasp_idle_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 33 ), ExtResource( 31 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "rasp_idle_left",
+"name": "rasp_idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 42 ) ],
@@ -133,19 +116,54 @@ animations = [ {
 "name": "lem_left",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "bb_idle_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 40 ) ],
+"loop": true,
+"name": "lem_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 29 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "rasp_idle_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ) ],
+"loop": true,
+"name": "lem_idle_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "bb_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 31 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "rasp_idle_left",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
 "loop": true,
 "name": "lem_idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ) ],
+"frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 41 ) ],
 "loop": true,
-"name": "bb_right",
+"name": "lem_idle_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 32 ) ],
 "loop": true,
-"name": "rasp_idle",
+"name": "rasp_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 52 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 53 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 58 ) ],
+"loop": true,
+"name": "intro",
 "speed": 5.0
 } ]
 
@@ -166,7 +184,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "lem_idle_right"
+animation = "intro"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
@@ -178,4 +196,30 @@ collision_mask = 11
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1, 93 )
 shape = SubResource( 3 )
+
+[node name="Powerup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 46 )
+volume_db = -20.0
+
+[node name="Idle Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 47 )
+volume_db = -20.0
+
+[node name="Carrot Bullet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 48 )
+volume_db = -35.0
+
+[node name="Raspberry Laser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 49 )
+volume_db = -30.0
+
+[node name="Blueberry Bullet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 50 )
+volume_db = -30.0
+
+[node name="Lemon Bullet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 51 )
+volume_db = -30.0
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="finished" from="Idle Sound" to="." method="_on_Idle_Sound_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemies/Toast.tscn" type="PackedScene" id=2]
@@ -13,19 +13,53 @@
 [ext_resource path="res://assets/health3.png" type="Texture" id=11]
 [ext_resource path="res://assets/health4.png" type="Texture" id=12]
 [ext_resource path="res://assets/health2.png" type="Texture" id=13]
+[ext_resource path="res://sfx/background_music.wav" type="AudioStream" id=14]
 [ext_resource path="res://level_1/Barrier.gd" type="Script" id=15]
+[ext_resource path="res://level_1/Level 1.gd" type="Script" id=16]
+[ext_resource path="res://assets/background/bg1.png" type="Texture" id=17]
 [ext_resource path="res://font/gnutypewriter_font.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/life.png" type="Texture" id=19]
+[ext_resource path="res://sfx/intro_hearty_laughter.wav" type="AudioStream" id=20]
+[ext_resource path="res://pause_screen/Pause Screen.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/background/bg5.png" type="Texture" id=22]
+[ext_resource path="res://assets/background/bg4.png" type="Texture" id=23]
+[ext_resource path="res://assets/background/bg8.png" type="Texture" id=24]
+[ext_resource path="res://assets/background/bg2.png" type="Texture" id=25]
+[ext_resource path="res://assets/background/bg6.png" type="Texture" id=26]
+[ext_resource path="res://assets/background/bg7.png" type="Texture" id=27]
+[ext_resource path="res://assets/background/bg3.png" type="Texture" id=28]
+[ext_resource path="res://assets/background/bossbg.png" type="Texture" id=29]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 18 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 25 ), ExtResource( 28 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "bg",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "boss_bg",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 512, 10 )
 
 [node name="Level 1" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause Screen" parent="CanvasLayer" instance=ExtResource( 21 )]
+visible = false
 
 [node name="Enemies" type="Node2D" parent="."]
+position = Vector2( 0, -256 )
+z_index = 1
 
 [node name="Egg" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 512, -160 )
@@ -339,10 +373,17 @@ position = Vector2( -475, -261 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 19 )
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Camera"]
+position = Vector2( 1.53402, 0.670014 )
+scale = Vector2( 0.533333, 0.555556 )
+frames = SubResource( 3 )
+animation = "boss_bg"
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 514.066, 512.001 )
 
 [node name="Barrier" type="Area2D" parent="."]
+position = Vector2( 0, -256 )
 script = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
@@ -351,4 +392,13 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier"]
 position = Vector2( 512, -3968 )
 shape = SubResource( 2 )
+
+[node name="Boss Intro" type="AudioStreamPlayer" parent="Barrier"]
+stream = ExtResource( 20 )
+
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -30.0
+[connection signal="area_entered" from="Barrier" to="Camera" method="_on_Barrier_area_entered"]
 [connection signal="area_entered" from="Barrier" to="Barrier" method="_on_Barrier_area_entered"]
+[connection signal="finished" from="Background Music" to="." method="_on_Background_Music_finished"]

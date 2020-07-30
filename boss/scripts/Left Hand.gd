@@ -5,6 +5,7 @@ var animation = "left_hand"
 var dead = false
 var utensils = "spoon"
 var motion = Vector2()
+var sound_played = false
 
 func _physics_process(delta):
 	$"Hand".play(animation)
@@ -29,3 +30,6 @@ func _on_Area2D_area_entered(area):
 	else:
 		dead = true
 		animation = "left_hand_dead"
+		if !sound_played:
+			$"Hand Death Sound".play()
+			sound_played = true

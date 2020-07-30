@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/raspberry_laser.wav-568a15f1b4017e0e10d5f523097a6429.sample"
+
+[deps]
+
+source_file="res://sfx/raspberry_laser.wav"
+dest_files=[ "res://.import/raspberry_laser.wav-568a15f1b4017e0e10d5f523097a6429.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
