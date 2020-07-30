@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Food Invaders"
+config/name="Meal Invaders"
 run/main_scene="res://title_screen/Title Screen.tscn"
 config/icon="res://icon.png"
 
